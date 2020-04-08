@@ -8,13 +8,13 @@ const CatActivity = () => {
     const[newName, setNewName] = useState('')
     const { name, activity } = value;
     
-    const handleClick = (action, dispach) => {
+    const handleClick = (action) => {
         dispach({
             type: action
         })
     }
 
-    const handleSubmit = (e, dispach) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         dispach({
             type: 'CHANGE_NAME',
@@ -26,18 +26,18 @@ const CatActivity = () => {
     return (
         <>
             <p>{name} is {activity}</p>
-            <button onClick={() => handleClick('ACTION_NAP', dispach)}>Napping</button>
-            <button onClick={() => handleClick('ACTION_PLAY', dispach)}>Playing</button>
-            <button onClick={() => handleClick('ACTION_EAT', dispach)}>Eating</button>
-                <form onSubmit={(e) => handleSubmit(e, dispach)}>
-                    <input 
-                    type="text" 
-                    value={newName}
-                    placeholder="New Name"
-                    onChange={(e) => setNewName(e.target.value)}
-                    />
-                    <button type="submit">New Cat</button>
-                </form>
+            <button onClick={() => handleClick('ACTION_NAP')}>Napping</button>
+            <button onClick={() => handleClick('ACTION_PLAY')}>Playing</button>
+            <button onClick={() => handleClick('ACTION_EAT')}>Eating</button>
+            <form onSubmit={(e) => handleSubmit(e)}>
+                <input 
+                type="text" 
+                value={newName}
+                placeholder="New Name"
+                onChange={(e) => setNewName(e.target.value)}
+                />
+                <button type="submit">New Cat</button>
+            </form>
         </>
     )
 }
