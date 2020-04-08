@@ -2,17 +2,18 @@ import React, { useContext, useState } from 'react';
 import StateContext from '../context'
 
 
-const handleClick = (action, dispach) => {
-    dispach({
-        type: action
-    })
-}
 
 const CatActivity = () => {
     const [value, dispach] = useContext(StateContext);
     const[newName, setNewName] = useState('')
     const { name, activity } = value;
     
+    const handleClick = (action, dispach) => {
+        dispach({
+            type: action
+        })
+    }
+
     const handleSubmit = (e, dispach) => {
         e.preventDefault();
         dispach({
@@ -31,7 +32,6 @@ const CatActivity = () => {
                 <form onSubmit={(e) => handleSubmit(e, dispach)}>
                     <input 
                     type="text" 
-                    name="newName"
                     value={newName}
                     placeholder="New Name"
                     onChange={(e) => setNewName(e.target.value)}
